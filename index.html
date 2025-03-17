@@ -60,7 +60,7 @@
         document.getElementById("submitForm").onsubmit = function(e) {
             e.preventDefault();
             let formData = new FormData(e.target);
-            let scriptURL = "https://script.google.com/macros/s/AKfycby_2YCH9WWQSwV9HvaOj90EtxZMKBnvkCw7VKw6UCpM6xRAI_lac_JoC11BS6SbOjKV/exec";
+            let scriptURL = "https://script.google.com/macros/s/AKfycbxrFzH7SEQROEiP69-dm4w9CY5ICYOzxrGmIpvoXvK_YEhivPxipONklzPZisAs4XXs/exec";
 
             fetch(scriptURL, { method: "POST", body: formData })
                 .then(response => response.text())
