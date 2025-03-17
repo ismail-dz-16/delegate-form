@@ -4,27 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delegate Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        form {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        label, input, textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h2>Register as a Delegate</h2>
     <form id="submitForm">
         <label>Full Name:</label>
-        <input type="text" name="fullname" required><br>
+        <input type="text" name="fullname" required>
 
         <label>Email:</label>
-        <input type="email" name="email" required><br>
+        <input type="email" name="email" required>
 
         <label>Phone Number:</label>
-        <input type="text" name="phone" required><br>
+        <input type="text" name="phone" required>
 
         <label>Birthday:</label>
-        <input type="date" name="birthday" required><br>
+        <input type="date" name="birthday" required>
 
         <label>National ID:</label>
-        <input type="text" name="national_id" required><br>
+        <input type="text" name="national_id" required>
 
         <label>Answer:</label>
-        <textarea name="question_answer" required></textarea><br>
+        <textarea name="question_answer" required></textarea>
 
         <button type="submit">Submit</button>
     </form>
@@ -32,14 +59,14 @@
     <script>
         document.getElementById("submitForm").onsubmit = function(e) {
             e.preventDefault();
-
             let formData = new FormData(e.target);
-            let scriptURL = "https://script.google.com/macros/s/AKfycby_2YCH9WWQSwV9HvaOj90EtxZMKBnvkCw7VKw6UCpM6xRAI_lac_JoC11BS6SbOjKV/exec"; // Replace with your script URL
+            let scriptURL = "https://script.google.com/macros/s/AKfycby_2YCH9WWQSwV9HvaOj90EtxZMKBnvkCw7VKw6UCpM6xRAI_lac_JoC11BS6SbOjKV/exec";
 
             fetch(scriptURL, { method: "POST", body: formData })
                 .then(response => response.text())
                 .then(data => {
-                    alert("Registration Successful! Check the Google Sheet.");
+                    alert("✅ Registration Successful! Check the Google Sheet.");
+                    e.target.reset();
                 })
                 .catch(error => console.error("Error!", error));
         };
