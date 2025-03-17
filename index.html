@@ -4,50 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delegate Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        form {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        label, input, textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h2>Register as a Delegate</h2>
-    
     <form id="submitForm">
         <label>Full Name:</label>
-        <input type="text" name="fullname" required><br>
+        <input type="text" name="fullname" required>
 
         <label>Email:</label>
-        <input type="email" name="email" required><br>
+        <input type="email" name="email" required>
 
         <label>Phone Number:</label>
-        <input type="text" name="phone" required><br>
+        <input type="text" name="phone" required>
 
         <label>Birthday:</label>
-        <input type="date" name="birthday" required><br>
+        <input type="date" name="birthday" required>
 
         <label>National ID:</label>
-        <input type="text" name="national_id" required><br>
+        <input type="text" name="national_id" required>
 
         <label>Answer:</label>
-        <textarea name="question_answer" required></textarea><br>
+        <textarea name="question_answer" required></textarea>
 
         <button type="submit">Submit</button>
     </form>
 
     <script>
-        document.getElementById("submitForm").addEventListener("submit", function(e) {
-            e.preventDefault(); // Prevent default form submission
-            
-            let formData = new FormData(this);
-            let scriptURL = "https://script.google.com/macros/s/AKfycbxrFzH7SEQROEiP69-dm4w9CY5ICYOzxrGmIpvoXvK_YEhivPxipONklzPZisAs4XXs/exec"; // Replace with your actual Google Apps Script URL
+    document.getElementById("submitForm").addEventListener("submit", function(e) {
+        e.preventDefault();
 
-            fetch(scriptURL, { method: "POST", body: formData })
-                .then(response => response.text())
-                .then(data => {
-                    alert("✅ Registration Successful! Check your Google Sheet.");
-                    this.reset(); // Clears the form after submission
-                })
-                .catch(error => {
-                    console.error("Error!", error);
-                    alert("❌ Error submitting the form.");
-                });
-        });
-    </script>
+        let formData = new FormData(this);
+        let scriptURL = "https://script.google.com/macros/s/AKfycbw1maKIkhhL7LGVP47L7NZw1_PVWNhoaoPn85Nlq_kJmxwJ4Vr1rpIhlYkxM4fsuOKS/exec"; // Replace with your Web App URL
+
+        fetch(scriptURL, { method: "POST", body: formData })
+            .then(response => response.text())
+            .then(data => {
+                alert("✅ Registration Successful! Check your Google Sheet.");
+                this.reset(); // Clears the form after submission
+            })
+            .catch(error => {
+                console.error("Error!", error);
+                alert("❌ Error submitting the form.");
+            });
+    });
+</script>
+
 </body>
 </html>
