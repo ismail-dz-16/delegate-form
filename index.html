@@ -61,7 +61,7 @@
         e.preventDefault();
 
         let formData = new FormData(this);
-        let scriptURL = "https://script.google.com/macros/s/AKfycbw1maKIkhhL7LGVP47L7NZw1_PVWNhoaoPn85Nlq_kJmxwJ4Vr1rpIhlYkxM4fsuOKS/exec"; // Replace with your Web App URL
+        let scriptURL = "https://script.google.com/macros/s/AKfycbxWJgE65aCOS1ggK7QFPGfI2ObHHBhItQjM8MkxXXSTN5POj4LVh-mp7ikR5C6wZUU/exec"; // Replace with your Web App URL
 
         fetch(scriptURL, { method: "POST", body: formData })
             .then(response => response.text())
